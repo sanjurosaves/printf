@@ -17,6 +17,7 @@ typedef struct type
 	void (*f)(va_list fmt_spec);
 } data_type;
 
+int printchar(char c);
 int _printf(const char *format, ...);
 
 #endif

@@ -8,7 +8,7 @@
  * On error, -1 is returned, and errno is set appropriately.
  */
 
-int _printchar(char c)
+int printchar(char c)
 {
 	return (write(1, &c, 1));
 }
