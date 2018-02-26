@@ -1,9 +1,13 @@
 #include "holberton.h"
 #include <unistd.h>
 
+/**
+ * _strlen - calculates no of chars in a string
+ * @str: pointer to the string
+ */
 int _strlen(char *str)
 {
-	int i;
+	int i = 0;
 
 	while(str[i] != '\0')
 	{
@@ -19,14 +23,14 @@ int _strlen(char *str)
  */
 int  print_str(va_list args)
 {
-	int i;
 	char *str;
+	int len;
 
 	str = va_arg(args, char *);
+	len = _strlen(str);
 
-	write(1, &str, _strlen(str));
-	return (_strlen(str));
-
+	write(1, str, len);
+	return (len);
 }
 
 /**
@@ -42,16 +46,26 @@ int print_char(va_list args)
 }
 
 /**
- * print_char - prints an argument, if its a char
+ * print_dec - prints an argument, if its a char
  *
  * @args: variadic function
  */
 int print_dec(va_list args)
 {
-        int i;
+	char *intstr;
+        int i, len, j;
 
 	i = ((va_arg(args, int)));
-	return (write(1, &i, 1));
+	intstr = malloc(sizeof(char) * 11);
+	intstr = itoa(i, intstr, 10);
+
+	len = _strlen(intstr);
+
+	for (j = 0; intstr[j] != '\0'; j++)
+		printchar(intstr[j]);
+
+	free(intstr);
+	return(len);
 }
 
 int _printf(const char *format, ...)
@@ -64,7 +78,7 @@ int _printf(const char *format, ...)
 		{NULL, NULL}
 	};
 	va_list args;
-	int spec_i = 0, place = 0, len = 0;
+	int spec_i = 0, place = 0, len = 0, len2 = 0;
 
 	va_start(args, format);
 
@@ -72,34 +86,53 @@ int _printf(const char *format, ...)
 	{
 		/* replicate char */
 		if ((format[place] != 37) && (format[place] != 92))
+		{
 			printchar(format[place]);
-
+			len++;
+		}
 		/* check for escape backslash */
 		else if (format[place] == 92)
 		{
 			if (format[place + 1] == 92)
+			{
 				printchar(92);
+				len++;
+			}
 			else if (format[place + 1] == 34)
+			{
 				printchar(34);
+				len++;
+			}
 			else if (format[place + 1] == 39)
+			{
 				printchar(39);
+				len++;
+			}
 			else if (format[place + 1] == 37)
+			{
 				printchar(37);
+				len++;
+			}
 		}
 
 		/* check for start of format specification */
 		else if (format[place] == 37)
 		{
 			if (format[place + 1] == 37)
+			{
 				printchar(37);
+				len++;
+			}
 			else
 			{
 				for (spec_i = 0; specifier[spec_i].fmt_spec != NULL; spec_i++)
 					if (format[place + 1] == *specifier[spec_i].fmt_spec)
-						specifier[spec_i].f(args);
+					{
+						len2 = specifier[spec_i].f(args);
+						len += len2;
+					}
 				place++;
 			}
-			place++;
 		}
 	}
 	va_end(args);
