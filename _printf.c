@@ -115,6 +115,6 @@ int _printf(const char *format, ...)
 			}
 		}
 	}
-	va_end(args); printchar('\n');
+	va_end(args);
 	return (len);
 }
