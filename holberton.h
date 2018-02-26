@@ -14,10 +14,12 @@
 typedef struct type
 {
 	char *fmt_spec;
-	void (*f)(va_list fmt_spec);
+	int (*f)(va_list fmt_spec);
 } data_type;
 
 int printchar(char c);
 int _printf(const char *format, ...);
+char *itoa(int value, char *result, int base);
+int handlebackslash(const char *format, int place, int len);
 
 #endif
