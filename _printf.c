@@ -4,12 +4,13 @@
 /**
  * _strlen - calculates no of chars in a string
  * @str: pointer to the string
+ * Return: length of the string
  */
 int _strlen(char *str)
 {
 	int i = 0;
 
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		i++;
 	}
@@ -18,8 +19,8 @@ int _strlen(char *str)
 
 /**
  * print_str - prints an argument, if its a str
- *
  * @args: variadic function
+ * Return: length of the string
  */
 int  print_str(va_list args)
 {
@@ -35,25 +36,26 @@ int  print_str(va_list args)
 
 /**
  * print_char - prints an argument, if its a char
- *
  * @args: variadic function
+ * Return: length of the char, which will always be 1
  */
 int print_char(va_list args)
 {
 	char c;
+
 	c = (va_arg(args, int));
 	return (write(1, &c, 1));
 }
 
 /**
  * print_dec - prints an argument, if its a char
- *
  * @args: variadic function
+ * Return: length of the string;
  */
 int print_dec(va_list args)
 {
 	char *intstr;
-        int i, len, j;
+	int i, len, j;
 
 	i = ((va_arg(args, int)));
 	intstr = malloc(sizeof(char) * 11);
@@ -65,9 +67,14 @@ int print_dec(va_list args)
 		printchar(intstr[j]);
 
 	free(intstr);
-	return(len);
+	return (len);
 }
 
+/**
+ * _printf - replicate standard lib func of same name
+ * @format: pointer to variadic string construct
+ * Return: length of string
+ */
 int _printf(const char *format, ...)
 {
 	data_type specifier[] = {
