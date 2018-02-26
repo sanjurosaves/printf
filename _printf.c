@@ -84,45 +84,18 @@ int _printf(const char *format, ...)
 		{"i", print_dec},
 		{NULL, NULL}
 	};
-	va_list args;
-	int spec_i = 0, place = 0, len = 0, len2 = 0;
+	va_list args; int spec_i = 0, place = 0, len = 0, len2 = 0;
 
 	va_start(args, format);
-
 	for ( ; format[place] != '\0'; place++)
 	{
-		/* replicate char */
 		if ((format[place] != 37) && (format[place] != 92))
 		{
 			printchar(format[place]);
 			len++;
 		}
-		/* check for escape backslash */
 		else if (format[place] == 92)
-		{
-			if (format[place + 1] == 92)
-			{
-				printchar(92);
-				len++;
-			}
-			else if (format[place + 1] == 34)
-			{
-				printchar(34);
-				len++;
-			}
-			else if (format[place + 1] == 39)
-			{
-				printchar(39);
-				len++;
-			}
-			else if (format[place + 1] == 37)
-			{
-				printchar(37);
-				len++;
-			}
-		}
-
-		/* check for start of format specification */
+			handlebackslash(format, place, len);
 		else if (format[place] == 37)
 		{
 			if (format[place + 1] == 37)
@@ -142,9 +115,6 @@ int _printf(const char *format, ...)
 			}
 		}
 	}
-	va_end(args);
-
-	printchar('\n');
-
+	va_end(args); printchar('\n');
 	return (len);
 }

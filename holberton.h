@@ -20,5 +20,6 @@ typedef struct type
 int printchar(char c);
 int _printf(const char *format, ...);
 char *itoa(int value, char *result, int base);
+int handlebackslash(const char *format, int place, int len);
 
 #endif

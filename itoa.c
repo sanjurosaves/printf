@@ -24,8 +24,9 @@ char *itoa(int value, char *result, int base)
 	do {
 		tmp_value = value;
 		value /= base;
-		*ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789
-abcdefghijklmnopqrstuvwxyz"[35 + (tmp_value - value * base)];
+		*ptr++ =
+"zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz"
+[35 + (tmp_value - value * base)];
 	} while  (value);
 
 	/* Apply negative sign */
