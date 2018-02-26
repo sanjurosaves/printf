@@ -14,7 +14,7 @@
 typedef struct type
 {
 	char *fmt_spec;
-	void (*f)(va_list fmt_spec);
+	int (*f)(va_list fmt_spec);
 } data_type;
 
 int printchar(char c);

@@ -1,17 +1,28 @@
 #include "holberton.h"
 #include <unistd.h>
+int _strlen(char *str)
+{
+	int i;
+
+	while(str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
 
 /**
  * print_str - prints an argument, if its a str
  *
  * @args: variadic function
  */
-void print_str(va_list args)
+int  print_str(va_list args)
 {
 	char *str;
 
 	str = va_arg(args, char *);
-	printf("%s", str);
+	write(1, &str, _strlen(str));
+	return (_strlen(str));
 }
 
 /**
@@ -19,9 +30,24 @@ void print_str(va_list args)
  *
  * @args: variadic function
  */
-void print_char(va_list args)
+int print_char(va_list args)
 {
-	printchar((unsigned char)va_arg(args, int));
+	char c;
+	c = (va_arg(args, int));
+	return (write(1, &c, 1));
+}
+
+/**
+ * print_char - prints an argument, if its a char
+ *
+ * @args: variadic function
+ */
+int print_dec(va_list args)
+{
+        int i;
+
+	i = ((va_arg(args, int)));
+	return (write(1, &i, 1));
 }
 
 int _printf(const char *format, ...)
@@ -29,6 +55,8 @@ int _printf(const char *format, ...)
 	data_type specifier[] = {
 		{"c", print_char},
 		{"s", print_str},
+		{"d", print_dec},
+		{"i", print_dec},
 		{NULL, NULL}
 	};
 	va_list args;
@@ -64,10 +92,10 @@ int _printf(const char *format, ...)
 				for (spec_i = 0; specifier[spec_i].fmt_spec != NULL; spec_i++)
 					if (format[place + 1] == *specifier[spec_i].fmt_spec)
 						specifier[spec_i].f(args);
+				place++;
 			}
 		}
 	}
-
 	va_end(args);
 
 	printchar('\n');
