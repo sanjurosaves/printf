@@ -61,7 +61,7 @@ int _printf(const char *format, ...)
 				printchar(37);
 			else
 			{
-				for (spec_i = 0; *specifier[spec_i] != NULL; spec_i++)
+				for (spec_i = 0; specifier[spec_i].fmt_spec != NULL; spec_i++)
 					if (format[place + 1] == *specifier[spec_i].fmt_spec)
 						specifier[spec_i].f(args);
 			}
