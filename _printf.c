@@ -1,5 +1,6 @@
 #include "holberton.h"
 #include <unistd.h>
+
 int _strlen(char *str)
 {
 	int i;
@@ -18,11 +19,14 @@ int _strlen(char *str)
  */
 int  print_str(va_list args)
 {
+	int i;
 	char *str;
 
 	str = va_arg(args, char *);
+
 	write(1, &str, _strlen(str));
 	return (_strlen(str));
+
 }
 
 /**
@@ -60,8 +64,7 @@ int _printf(const char *format, ...)
 		{NULL, NULL}
 	};
 	va_list args;
-	int spec_i = 0;
-	int place = 0;
+	int spec_i = 0, place = 0, len = 0;
 
 	va_start(args, format);
 
@@ -70,6 +73,7 @@ int _printf(const char *format, ...)
 		/* replicate char */
 		if ((format[place] != 37) && (format[place] != 92))
 			printchar(format[place]);
+
 		/* check for escape backslash */
 		else if (format[place] == 92)
 		{
@@ -82,6 +86,7 @@ int _printf(const char *format, ...)
 			else if (format[place + 1] == 37)
 				printchar(37);
 		}
+
 		/* check for start of format specification */
 		else if (format[place] == 37)
 		{
@@ -94,11 +99,12 @@ int _printf(const char *format, ...)
 						specifier[spec_i].f(args);
 				place++;
 			}
+			place++;
 		}
 	}
 	va_end(args);
 
 	printchar('\n');
 
-	return (place);
+	return (len);
 }
