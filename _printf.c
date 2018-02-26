@@ -21,26 +21,28 @@ void print_str(va_list args)
  */
 void print_char(va_list args)
 {
-	printf("%c", (char)va_arg(args, int));
+	printchar((unsigned char)va_arg(args, int));
 }
 
 int _printf(const char *format, ...)
 {
-/*	data_type specifier[] = {
+	data_type specifier[] = {
 		{"c", print_char},
 		{"s", print_str},
 		{NULL, NULL}
 	};
-*/	va_list args;
-/*	int i = 0;
- */	int place = 0;
+	va_list args;
+	int spec_i = 0;
+	int place = 0;
 
 	va_start(args, format);
 
 	for ( ; format[place] != '\0'; place++)
 	{
+		/* replicate char */
 		if ((format[place] != 37) && (format[place] != 92))
 			printchar(format[place]);
+		/* check for escape backslash */
 		else if (format[place] == 92)
 		{
 			if (format[place + 1] == 92)
@@ -52,35 +54,20 @@ int _printf(const char *format, ...)
 			else if (format[place + 1] == 37)
 				printchar(37);
 		}
+		/* check for start of format specification */
 		else if (format[place] == 37)
 		{
 			if (format[place + 1] == 37)
 				printchar(37);
-			else if (format[place + 1] == 'c')
-				print_char(args);
-			else if (format[place + 1] == 's')
-				 print_str(args);
-			else if (format[place + 1] == 'd'
-				 || format[place + 1] == 'i')
-				/* print integer */{;}
-		}
-	}
-/*
-	while (format != NULL && format[place] != '\0')
-	{
-		while (specifier[i].fmt_spec != NULL)
-		{
-
-			if (format[i] == *specifier[i].fmt_spec)
+			else
 			{
-				specifier[i].f(args);
+				for (spec_i = 0; *specifier[spec_i] != NULL; spec_i++)
+					if (format[place + 1] == *specifier[spec_i].fmt_spec)
+						specifier[spec_i].f(args);
 			}
-			i++;
 		}
-		i = 0;
-		place++;
 	}
-*/
+
 	va_end(args);
 
 	printchar('\n');
