@@ -39,29 +39,3 @@ char *itoa(int value, char *result, int base)
 	}
 	return (result);
 }
-
-/*char *itoa(int value, char *result, int base)
-{
-	char *str;
-	int len;
-
-	len = _lenght(str);
-	if (value == LLONG_MIN)
-		return (ft_strdup("-9223372036854775808"));
-	str = (char*)malloc(sizeof(char) * (len + 1))))
-	if (str == NULL)
-		return (-1);
-str[len] = '\0';
-	if (value < 0)
-	{
-		str[0] = '-';
-		n *= -1;
-	}
-	while (n > 9)
-	{
-		s[--len] = (n % 10) + 48;
-		n /= 10;
-	}
-	s[--len] = n + 48;
-	return (s);
-	}*/

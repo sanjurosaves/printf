@@ -1,5 +1,11 @@
 #include "holberton.h"
-
+/**
+ * handlebackslash - checking the next position after backslash
+ * @format: pointer to the string
+ * @place: position
+ * @len: calculating the lenght
+ * Return: length of the string
+ */
 int handlebackslash(const char *format, int place, int len)
 {
 	if (format[place + 1] == 92)
