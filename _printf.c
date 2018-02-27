@@ -89,6 +89,10 @@ int _printf(const char *format, ...)
 				printchar(37);
 				len++;
 			}
+			/*if (format[place + 1] != 'c' || format[place + 1] != 's' || format[place + 1] != 'd' || format[place + 1] != 'i')
+			{
+				len++;
+				}*/
 			else
 			{
 				for (spec_i = 0; specifier[spec_i].fmt_spec != NULL; spec_i++)
