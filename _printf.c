@@ -71,6 +71,8 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
+	if (specifier[spec_i].fmt_spec == NULL)
+		return (-1);
 	va_start(args, format);
 	for (; format[place] != '\0'; place++)
 	{
@@ -88,7 +90,6 @@ int _printf(const char *format, ...)
 					;
 				place = place + smark - 1; smark = 1;
 			}
-
 			if (format[place + smark] == 37)
 			{
 				printchar(37); len++; place++;
