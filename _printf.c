@@ -64,11 +64,8 @@ int print_dec(va_list args)
 int _printf(const char *format, ...)
 {
 	data_type specifier[] = {
-		{"c", print_char},
-		{"s", print_str},
-		{"d", print_dec},
-		{"i", print_dec},
-		{NULL, NULL}
+		{"c", print_char}, {"s", print_str}, {"d", print_dec},
+		{"i", print_dec}, {NULL, NULL}
 	};
 	va_list args; int spec_i = 0, place = 0, len = 0, len2 = 0;
 
@@ -77,23 +74,20 @@ int _printf(const char *format, ...)
 	{
 		if ((format[place] != 37) && (format[place] != 92))
 		{
-			printchar(format[place]);
-			len++;
+			printchar(format[place]); len++;
 		}
-		if (format[place] == 92)
+		else if (format[place] == 92)
 			handlebackslash(format, place, len);
-		if (format[place] == 37)
+		else if (format[place] == 37)
 		{
-			if (format[place + 1] == 37)
+			if ((format[place] == 37) && (format[place + 1] == 37))
 			{
-				printchar(37);
-				len++;
+				printchar(37); len++; place++;
 			}
-			if (format[place + 1] != 'c' && format[place + 1] != 's'
+			else if (format[place + 1] != 'c' && format[place + 1] != 's'
 			    && format[place + 1] != 'd' && format[place + 1] != 'i')
 			{
-				printchar(format[place]);
-				len++;
+				printchar(format[place]); len++;
 			}
 			else
 			{
