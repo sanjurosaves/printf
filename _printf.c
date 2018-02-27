@@ -68,7 +68,7 @@ int _printf(const char *format, ...)
 		{"i", print_dec}, {NULL, NULL}
 	};
 	va_list args; int spec_i = 0, place = 0, len = 0, len2 = 0;
-
+)
 	va_start(args, format);
 	for (; format[place] != '\0'; place++)
 	{
