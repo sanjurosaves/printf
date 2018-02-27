@@ -2,22 +2,6 @@
 #include <unistd.h>
 
 /**
- * _strlen - calculates no of chars in a string
- * @str: pointer to the string
- * Return: length of the string
- */
-int _strlen(char *str)
-{
-	int i = 0;
-
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
-/**
  * print_str - prints an argument, if its a str
  * @args: variadic function
  * Return: length of the string
@@ -59,6 +43,8 @@ int print_dec(va_list args)
 
 	i = ((va_arg(args, int)));
 	intstr = malloc(sizeof(char) * 11);
+	if (intstr == NULL)
+		return (-1);
 	intstr = itoa(i, intstr, 10);
 
 	len = _strlen(intstr);
