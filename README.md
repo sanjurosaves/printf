@@ -14,9 +14,7 @@ The repository contains the following files:
 | holberton.h   | Header file containing all function prototypes and struct declaration |
 | helper_func.c | Containing helper functions to print character, string and numbers |
 | morefunctions.c | Containing helper function |
-| _strlen.c | a strlen replica, returns the lenght of the string |
-| itoa.c  | integer to alpha convention |
-| morefunctions.c| checking the next position after backslash |
+
 
 ### Function Descriptions
 
