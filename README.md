@@ -25,7 +25,8 @@ The repository contains the following files:
 |int print_dec(va_list args)|Prints a number|
 |int printchar(char c)| Writes a character to stdout|
 |int _strlen(char *str)|calculates the lenght of the string|
-|char *itoa(int value, char *result, int base)|convert integer to alpha convention|
+|char *ft_itoa_base(int value, char *text, int base)|convert integer to alpha convention|
+|long max_power(long nb, int base)|determines max power|
 |int handlebackslash(const char *format, int place, int len)| checking the next position after backslash |
 |int _printf(const char *format, ...)|prints strings, characters and numbers to stdout|
 
