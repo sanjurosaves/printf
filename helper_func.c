@@ -44,7 +44,7 @@ int print_dec(va_list args)
 	intstr = malloc(sizeof(char) * 11);
 	if (intstr == NULL)
 		return (-1);
-	intstr = itoa(i, intstr, 10);
+	intstr = ft_itoa_base(i, intstr, 10);
 	len = _strlen(intstr);
 	for (j = 0; intstr[j] != '\0'; j++)
 		printchar(intstr[j]);
