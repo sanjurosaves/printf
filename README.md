@@ -13,7 +13,7 @@ The repository contains the following files:
 | \_printf.c | The printf function |
 | holberton.h   | Header file containing all function prototypes and struct declaration |
 | helper_func.c | Containing helper functions to print character, string and numbers |
-| printchar.c | a putchar replica, prints a character |
+| morefunctions.c | Containing helper function |
 | _strlen.c | a strlen replica, returns the lenght of the string |
 | itoa.c  | integer to alpha convention |
 | morefunctions.c| checking the next position after backslash |
@@ -22,13 +22,15 @@ The repository contains the following files:
 
 | **Function** | **Description** |
 | -------------- | ----------------- |
-|int (*get_format(char chr))(va_list)| Function that checks if the character format modifier being passed is valid or not|
-|int _putchar(char c)| Writes a character to stdout|
-|int print_char(va_list list)|prints a character|
-|int print_string(va_list list)|Prints a string|
-|int print_string(va_list list)|Prints a string|
-|int _pow(int x, int y)|calculates the power of a number recursively|
-|int print_num(va_list list)|prints a number|
+
+
+|int print_char(va_list args)|prints a character|
+|int print_str(va_list args)|Prints a string|
+|int print_dec(va_list args)|Prints a number|
+|int printchar(char c)| Writes a character to stdout|
+|int _strlen(char *str)|calculates the lenght of the string|
+|char *itoa(int value, char *result, int base)|convert integer to alpha convention|
+|int handlebackslash(const char *format, int place, int len)| checking the next position after backslash |
 |int _printf(const char *format, ...)|prints strings, characters and numbers to stdout|
 
 ### Usage and Installation
