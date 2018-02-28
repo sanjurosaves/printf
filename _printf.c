@@ -8,10 +8,8 @@
  */
 int _printf(const char *format, ...)
 {
-	data_type specifier[] = {
-		{"c", print_char}, {"s", print_str}, {"d", print_dec},
-		{"i", print_dec}, {NULL, NULL}
-	};
+	data_type specifier[] = {{"c", print_char}, {"s", print_str},
+				 {"d", print_dec}, {"i", print_dec}, {NULL, NULL} };
 	va_list args; int spec_i = 0, place = 0, len = 0, len2 = 0, smark = 1;
 
 	if (format == NULL)
