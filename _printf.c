@@ -81,12 +81,12 @@ int _printf(const char *format, ...)
 		{
 			if (format[place + 1] == '\0')
 				break;
-			if ((format[place] == 37) && (format[place + smark] == 32))
+			/*if ((format[place] == 37) && (format[place + smark] == 32))
 			{
 				for ( ; format[place + smark] == 32; smark++)
 					;
 				place = place + smark - 1; smark = 1;
-			}
+				}*/
 			if (format[place + smark] == 37)
 			{
 				printchar(37); len++; place++;
