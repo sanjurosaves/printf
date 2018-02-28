@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 /**
  * struct type - incoming data type/format
@@ -19,6 +20,9 @@ typedef struct type
 
 int printchar(char c);
 int _strlen(char *str);
+int print_str(va_list args);
+int print_char(va_list args);
+int print_dec(va_list args);
 int _printf(const char *format, ...);
 char *itoa(int value, char *result, int base);
 int handlebackslash(const char *format, int place, int len);
