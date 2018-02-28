@@ -20,8 +20,6 @@ The repository contains the following files:
 
 | **Function** | **Description** |
 | -------------- | ----------------- |
-
-
 |int print_char(va_list args)|prints a character|
 |int print_str(va_list args)|Prints a string|
 |int print_dec(va_list args)|Prints a number|
