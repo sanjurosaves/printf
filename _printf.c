@@ -46,12 +46,9 @@ int print_dec(va_list args)
 	if (intstr == NULL)
 		return (-1);
 	intstr = itoa(i, intstr, 10);
-
 	len = _strlen(intstr);
-
 	for (j = 0; intstr[j] != '\0'; j++)
 		printchar(intstr[j]);
-
 	free(intstr);
 	return (len);
 }
@@ -71,8 +68,6 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-	if (format[place] == '\0')
-		return (0);
 	va_start(args, format);
 	for (; format[place] != '\0'; place++)
 	{
@@ -84,6 +79,8 @@ int _printf(const char *format, ...)
 			handlebackslash(format, place, len);
 		else if (format[place] == 37)
 		{
+			if (format[place + 1] == '\0')
+				break;
 			if ((format[place] == 37) && (format[place + smark] == 32))
 			{
 				for ( ; format[place + smark] == 32; smark++)
