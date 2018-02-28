@@ -6,31 +6,28 @@
     _printf FORMAT [ARGUMENT]
     _printf OPTION
 .SH DESCRIPTION
-    The _printf utility formats and prints its arguments, after the first,  under control of the format. The format is a character string which contains three types of objects: plain characters, which are simply copied to standard output, character escape sequences which are converted and copied to the standard output, and format specifications, each of which causes printing of the next argument.
+    The _printf utility formats and prints its arguments, after the first format argument,  under control of the format. The format is a character string which contains three types of objects: plain characters, which are simply copied to standard output, character escape sequences which are converted and copied to the standard output, and format specifications, each of which causes printing of the next argument.
 
     Print ARGUMENT(s) according to FORMAT, or execute according to OPTION.
-    FORMAT controls  the output as in C _printf. Interpreted sequenses are:
+    FORMAT controls  the output as in C _printf. Interpreted sequences are:
 
-    \\"     double quote
+    \"     double quote
 
-    \\\\     backslash
+    \\     backslash
 
      %%     a single %
 
      Conversion specifiers
      A character that specifies the type of conversion to be applied.  The conversion specifiers and their meanings are:
 
-     d, i   The int argument is converted to signed decimal notation.
+     d, i   Integers of base 10; The int argument is converted to signed decimal notation.
 
-     c	    If no l modifier is present, the int argument is converted to an unsigned char, and the resulting character is written.  If an l modifier is present, the wint_t (wide character) argument is converted to a multibyte sequence by a call to the wcrtomb(3) function, with a conversion state starting in the initial state, and the resulting multibyte string is written.
+     c	    Character;
 
-     s 	    If no l modifier is present: the const char * argument is  expected to be a pointer to an array of character type (pointer to a string).  Characters from the array are written up to (but not including) a terminating null byte ('\0'); if a precision is specified, no more than the number specified are written.  If a precision is given, no null byte need be present; if the precision is not specified, or is greater than the size of the array, the array must contain a terminating null byte.
+     s 	    String of characters;
 
-     	    If an l modifier is present: the const wchar_t * argument is expected to be a pointer to an array of wide characters.  Wide characters from the array are converted to multibyte characters (each by a call to the wcrtomb(3) function, with a conversion state starting in the initial state before the first wide character), up to and including a terminating null wide character.  The resulting multibyte characters are written up to (but not including) the terminating null byte.  If a precision is specified, no more bytes than the number specified are written, but no partial multibyte characters are written. Note that the precision determines the number of bytes written, not the number of wide characters or screen positions. The array must contain a terminating null wide character, unless a precision is given and it is so small that the number of bytes written exceeds it before the end of the array is reached.
 .SH RETURN VALUE
-    Upon successful return, these functions return the number of
-    characters printed (excluding the null byte used to end output to
-    strings).
+    Upon successful return, this function returns the number of characters printed (excluding the null byte used to end output to strings). Upon failure it returns a negative value.
 
 int _printf(const char *format, ...)
 {
