@@ -56,5 +56,4 @@ $
 
 ### Authors
 
-Alex Allen
-Elena Serebryakova
+Alex Allen, Elena Serebryakova
