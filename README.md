@@ -16,6 +16,7 @@ The repository contains the following files:
 | printchar.c | a putchar replica, prints a character |
 | _strlen.c | a strlen replica, returns the lenght of the string |
 | itoa.c  | integer to alpha convention |
+| morefunctions.c| checking the next position after backslash |
 
 ### Function Descriptions
 
