@@ -31,13 +31,12 @@ The repository contains the following files:
 |int _printf(const char *format, ...)|prints strings, characters and numbers to stdout|
 
 ### Usage and Installation
-Clone the repository, compile with  by cloning the repository to a directory, then run the executable.
+Clone the repository, compile with comliation flags, listed below, then run the executable.
 ```
-$ git clone https://github.com/kevanlucc/printf.git
+$ git clone https://github.com/sanjurosaves/printf.git
 ```
 ### Compilation
-
-This code was compiled with the following flags:
+This code was compiled this way:
 ` $ gcc -Wall -Wextra -Werror -pedantic -Wno-format *.c -o printf `
 
 ###### Example code
@@ -54,30 +53,7 @@ Hello World
 $
 ```
 
-###  Roadmap 
-
-Adding more format modifiers:
-* r
-* R
-* x
-* X
-* u
-* o
-* S
-* p
-
 ### Authors
 
-* [**Kevan Lucchini**](https://github.com/kevanlucc)
-* [**Madison Burke**](https://github.com/RocketHTML)
-
-<p align="center">
-<a href="https://www.holbertonschool.com"><img src="https://intranet.hbtn.io/assets/holberton-logo-simplified-d4e8a1e8bf5ad93c8c3ce32895b4b53749b477b7ba7342d7f064e6883bcd3be2.png"></a>
-</p>
-File | Description
---- | ---
-holberton.h | header file
-printchar.c | a put char replica
-_printf.c | primary file
-itoa.c | integer to alpha conversion
-README.md | readme
+Alex Allen
+Elena Serebryakova
