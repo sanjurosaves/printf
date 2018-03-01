@@ -44,6 +44,11 @@ int _printf(const char *format, ...)
 				for (spec_i = 0; specifier[spec_i].fmt_spec != NULL; spec_i++)
 					if (format[place + smark] == *specifier[spec_i].fmt_spec)
 					{
+						if (len2 == 0)
+						{
+							va_end(args);
+							return (-1);
+						}
 						len2 = specifier[spec_i].f(args);
 						len += len2;
 					}

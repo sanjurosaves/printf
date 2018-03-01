@@ -12,8 +12,6 @@ int  print_str(va_list args)
 
 	str = va_arg(args, char *);
 	len = _strlen(str);
-	if (len <= 0)
-		return (-1);
 	write(1, str, len);
 	return (len);
 }
@@ -43,8 +41,6 @@ int print_dec(va_list args)
 
 	i = ((va_arg(args, int)));
 	intstr = malloc(sizeof(char) * 11);
-	if (intstr == NULL)
-		return (-1);
 	intstr = ft_itoa_base(i, intstr, 10);
 	len = _strlen(intstr);
 	if (len <= 0)
