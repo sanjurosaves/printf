@@ -11,8 +11,6 @@ int  print_str(va_list args)
 	int len;
 
 	str = va_arg(args, char *);
-	if (str == NULL)
-		return (-1);
 	len = _strlen(str);
 	write(1, str, len);
 	return (len);
@@ -28,8 +26,6 @@ int print_char(va_list args)
 	char c;
 
 	c = (va_arg(args, int));
-	if (c == 0)
-		return (-1);
 	return (write(1, &c, 1));
 }
 
@@ -44,8 +40,6 @@ int print_dec(va_list args)
 	int i, len, j;
 
 	i = ((va_arg(args, int)));
-	if (i == 0)
-		return (-1);
 	intstr = malloc(sizeof(char) * 11);
 	if (intstr == NULL)
 		return (-1);
