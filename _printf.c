@@ -25,6 +25,11 @@ int _printf(const char *format, ...)
 			handlebackslash(format, place, len);
 		else if (format[place] == 37)
 		{
+			if (format[place + smark] == '\0')
+			{
+				va_end(args);
+				return (-1);
+			}
 			if (format[place + smark] == 37)
 			{
 				printchar(37); len++; place++;
