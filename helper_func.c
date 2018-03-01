@@ -44,6 +44,8 @@ int print_dec(va_list args)
 	int i, len, j;
 
 	i = ((va_arg(args, int)));
+	if (i == 0)
+		return (-1);
 	intstr = malloc(sizeof(char) * 11);
 	if (intstr == NULL)
 		return (-1);
